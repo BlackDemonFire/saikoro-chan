@@ -1,6 +1,7 @@
 {
     "token": "BOT_TOKEN https://discord.com/developers/applications",
     "prefix": "!",
+    "randomAPIKey": "Remove this key from the json if you don't want to use random.org",
     "logging": {
         "loadcommand": false,
         "command": false,
