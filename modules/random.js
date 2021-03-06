@@ -1,5 +1,4 @@
 const randomorg = require("random-org")
-const random = new randomorg({apiKey: "f7f6dd2c-9fcc-4ca2-b1b3-a825abcb13ad"})
 class FakeRandom {
   constructor () {}
   int (min, max) {
