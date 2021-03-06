@@ -1,0 +1,13 @@
+{
+    "token": "BOT_TOKEN https://discord.com/developers/applications",
+    "prefix": "!",
+    "logging": {
+        "loadcommand": false,
+        "command": false,
+        "message": false,
+        "debug": false,
+        "log": true,
+        "warn": true,
+        "error": true
+    }
+}
