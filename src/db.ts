@@ -1,6 +1,7 @@
 import { Database, Statement } from "better-sqlite3";
 import sqlite = require("better-sqlite3");
 import { User } from "discord.js";
+import { existsSync, mkdirSync } from "fs";
 
 export class DB {
     private wal;
@@ -19,6 +20,7 @@ export class DB {
     protected setGifTypeStatement: Statement;
     protected setNameStatement: Statement;
     constructor() {
+        if (!existsSync("./data")) mkdirSync("./data");
         this.db = new sqlite("data/users.sqlite");
         this.db.prepare("CREATE TABLE IF NOT EXISTS 'dsachars' (prefix text PRIMARY KEY, avatar text, displayname text);").run();
         //this.db.prepare("CREATE TABLE IF NOT EXISTS 'settings' (guild text PRIMARY KEY, language text);").run();

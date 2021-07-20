@@ -1,6 +1,6 @@
 import Client from "bot";
 import { MessageEmbed } from "discord.js";
-import { Command } from "modules/command"
+import { Command } from "../modules/command"
 
 export default class Eightball extends Command {
     constructor(client: Client) {
