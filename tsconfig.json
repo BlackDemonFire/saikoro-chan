@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es2016",
+        "outDir": "./out",
+        "baseUrl": "./src",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "sourceMap": true,
+        "types": [
+            // add node as an option
+            "node",
+            "better-sqlite3"
+        ],
+        "typeRoots": [
+            // add path to @types
+            "node_modules/@types"
+        ],
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "resolveJsonModule": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
