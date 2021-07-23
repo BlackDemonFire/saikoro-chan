@@ -12,7 +12,7 @@ export default class Blush extends GifCommand {
         usage: `${this.prefix}blush`,
         category: "gifs",
         description: "rot werden"
-    }
+    };
     async run(client: Client, message: Message, args: string[]) {
         var gif: string = client.db.getgif("blush", client.db.getgiftype(message.author));
         var userA: string = client.db.getname(message.author);

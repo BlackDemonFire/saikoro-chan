@@ -12,7 +12,7 @@ export default class Kiss extends GifCommand {
         usage: `${this.prefix}kiss [user]`,
         category: "gifs",
         description: "Jemanden küssen"
-    }
+    };
     async run(client: Client, message: Message, args: string[]) {
         var gif: string = client.db.getgif("kiss", client.db.getgiftype(message.author));
         var userA: string = client.db.getname(message.author);

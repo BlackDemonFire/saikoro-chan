@@ -1,6 +1,6 @@
 import Client from "bot";
 import { MessageEmbed } from "discord.js";
-import { Command } from "../modules/command"
+import { Command } from "../modules/command";
 
 export default class Eightball extends Command {
     constructor(client: Client) {
@@ -12,8 +12,11 @@ export default class Eightball extends Command {
         usage: `${this.prefix}8ball <Frage>`,
         category: "Utility",
         description: "Befrage den magischen 8ball"
-    }
+    };
     run = async (client, message, args) => {
+        if (!args || args.length < 1) {
+            return message.channel.send("Der magische 8ball hat keine Frage auf die er antworten kann.");
+        }
         const yesresp = ["Ja", "Ja", "Scheint so", "Eher schon", "Ich glaube schon", "Bestimmt", "Vermutlich", "Definitiv"];
         const noresp = ["Nein", "Nein", "Scheint nicht so", "Eher nicht", "Nö", "Ich glaube nicht", "Bestimmt nicht", "Nein! ... Baka"];
         let res: number = await client.random.int(0, 1);
@@ -32,5 +35,5 @@ export default class Eightball extends Command {
             .setAuthor("8ball", "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/144/twitter/154/billiards_1f3b1.png")
             .setFooter("@" + message.author.username);
         message.channel.send("*" + "„" + args.join(" ") + "“" + "*", embed);
-    }
+    };
 }

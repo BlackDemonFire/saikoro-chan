@@ -1,28 +1,32 @@
 import Client from "bot";
-import { Collection, DMChannel, Message, MessageCollector, Snowflake, TextChannel } from "discord.js"
+import { Collection, DMChannel, Message, MessageCollector, Snowflake, TextChannel } from "discord.js";
 import { Command } from "../modules/command";
 
 export default class New extends Command {
     constructor(client: Client) {
-        super(client)
+        super(client);
     }
     help = {
         show: true,
         name: "new",
         usage: `${this.prefix}new`,
-        category: "dsa",
+        category: "roleplay",
         description: "Füge einen neuen Character hinzu"
-    }
+    };
     run(client: Client, message: Message, args: string[]) {
         var i = 0;
         var collector: MessageCollector;
         var av: string;
         var pref: string;
-        message.channel.send("Bitte nenne den Kürzel für den Charakter");
+        message.channel.send("Bitte nenne den Kürzel für den Charakter (du kannst jederzeit mit dem Schlüsselwort `abbrechen` die Erstellung abbrechen.)");
         if (message.channel instanceof DMChannel || message.channel instanceof TextChannel) {
             collector = new MessageCollector(message.channel, (m: Message) => m.author.id === message.author.id, { time: 50000 });
-            collector.on("end", (msgs: Collection<Snowflake, Message>) => { if (msgs.size == 0) return message.channel.send("Du hast zu viel Zeit benötigt.") });
+            collector.on("end", (msgs: Collection<Snowflake, Message>) => { if (msgs.size == 0) return message.channel.send("Du hast zu viel Zeit benötigt."); });
             collector.on("collect", (msg: Message) => {
+                if (msg.content.toLowerCase()=="abbrechen") {
+                    collector.stop();
+                    return message.channel.send("Der Vorgang wurde abgebrochen.")
+                }
                 if (i > 2) {
                     collector.stop();
                 } else {
@@ -36,7 +40,7 @@ export default class New extends Command {
                         console.log(pref);
                         break;
                     case 2:
-                        if (msg.content === 'n') {
+                        if (msg.content === 'n' || !msg.content.indexOf("http")) {
                             av = '';
                         } else {
                             av = msg.content;
@@ -47,11 +51,11 @@ export default class New extends Command {
                     case 3:
                         var name = msg.content;
                         collector.stop();
-                        msg.channel.send(`Der Charakter \`${name}\` wird mit dem Prefix \`${pref}\` eingespeichert!`)
+                        msg.channel.send(`Der Charakter \`${name}\` wird mit dem Prefix \`${pref}\` eingespeichert!`);
                         client.db.newDSAChar(pref, name, av);
                         break;
                 }
-            })
+            });
         }
     }
 }

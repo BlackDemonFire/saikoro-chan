@@ -12,7 +12,7 @@ export default class Help extends Command {
         usage: `${this.prefix}help [command]`,
         category: "Utility",
         description: "Zeige alle verfügbaren Befehle an oder lass sie dir erklären"
-    }
+    };
     run(client: Client, message: Message, args: string[]) {
         const embed = new MessageEmbed();
         if (args && args[0]) {
@@ -27,7 +27,7 @@ export default class Help extends Command {
                     .addField("Nutzung", command.help.usage)
                     .addField("Nutzung", "[optional], <notwendig>");
             } else {
-                embed.setDescription("Der Befehl `" +  args[0] + "` wurde nicht gefunden.");
+                embed.setDescription("Der Befehl `" + args[0] + "` wurde nicht gefunden.");
             }
         } else {
             var categories = [];
@@ -38,7 +38,7 @@ export default class Help extends Command {
                 } else {
                     categories[cmd.help.category].push(cmd.help.name);
                 }
-            })
+            });
             for (const category in categories) {
                 embed.addField(category, categories[category].join(", "));
             }

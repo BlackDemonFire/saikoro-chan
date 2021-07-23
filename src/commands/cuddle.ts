@@ -12,7 +12,7 @@ export default class Cuddle extends GifCommand {
         usage: `${this.prefix}cuddle [user]`,
         category: "gifs",
         description: "Mit jemandem kuscheln"
-    }
+    };
     async run(client: Client, message: Message, args: string[]) {
         var gif: string = client.db.getgif("cuddle", client.db.getgiftype(message.author));
         var userA: string = client.db.getname(message.author);

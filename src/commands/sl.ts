@@ -9,9 +9,9 @@ export default class Sl extends Command {
         show: true,
         name: "sl",
         usage: `${this.prefix}sl [character] <message>`,
-        category: "sl",
+        category: "roleplay",
         description: "Spiele einen Character"
-    }
+    };
     async run(client: Client, message: Message, args: string[]) {
         if (message.channel instanceof DMChannel) return message.channel.send("Dieser Befehl ist nicht in Direktnachrichten verfügbar.");
         if (!message.channel.permissionsFor(message.guild.me).has(["MANAGE_MESSAGES", "MANAGE_WEBHOOKS"])) return message.channel.send("Um diesen Befehl ausführen zu können muss ich die Berechtigungen zum verwalten von Nachrichten und Webhooks haben.");
@@ -44,7 +44,7 @@ export default class Sl extends Command {
             displayName = char.displayname;
             displayImg = char.avatar;
         } else {
-            var i = 0
+            var i = 0;
             while (i < count) {
                 var npc = npc.replace("$", " ");
                 i = i + 1;
@@ -56,14 +56,14 @@ export default class Sl extends Command {
             displayImg = "https://cdn.discordapp.com/icons/790938544293019649/d0843b10f5e7dabd10ebbea93acfca28.webp";
         }
         if (message.channel instanceof TextChannel) {
-            var webhook: Webhook = await message.channel.createWebhook(displayName, { avatar: displayImg })
+            var webhook: Webhook = await message.channel.createWebhook(displayName, { avatar: displayImg });
             if (message.attachments.size == 0) {
                 await webhook.send(args.join(" "));
                 webhook.delete();
                 message.delete();
             } else {
                 let attarr = [];
-                message.attachments.forEach(a => { attarr.push(a.url) });
+                message.attachments.forEach(a => { attarr.push(a.url); });
                 await webhook.send(args.join(" "), { files: attarr });
                 webhook.delete();
                 message.delete();

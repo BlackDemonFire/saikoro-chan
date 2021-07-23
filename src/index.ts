@@ -26,4 +26,4 @@ readdir("./out/commands", (err, files) => {
     });
 });
 
-client.login(config.token)
+client.login(config.token);

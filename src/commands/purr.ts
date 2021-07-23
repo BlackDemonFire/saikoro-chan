@@ -12,7 +12,7 @@ export default class Purr extends GifCommand {
         usage: `${this.prefix}purr`,
         category: "gifs",
         description: "Purr"
-    }
+    };
     async run(client: Client, message: Message, args: string[]) {
         var gif: string = client.db.getgif("purr", client.db.getgiftype(message.author));
         var userA: string = client.db.getname(message.author);

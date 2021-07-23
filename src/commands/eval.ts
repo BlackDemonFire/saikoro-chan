@@ -1,11 +1,11 @@
-import { Message } from "discord.js"
-import { Command } from "../modules/command"
-import { inspect } from "util"
-import Client from "bot"
+import { Message } from "discord.js";
+import { Command } from "../modules/command";
+import { inspect } from "util";
+import Client from "bot";
 
 export default class Eval extends Command {
     constructor(client: Client) {
-        super(client)
+        super(client);
     }
     help = {
         show: false,
@@ -13,7 +13,7 @@ export default class Eval extends Command {
         usage: `${this.prefix}eval <code>`,
         category: "Owner only",
         description: "Javscript code ausführen"
-    }
+    };
     run(client: Client, message: Message, args: string[]) {
         if (!super.isOwner(message)) return message.channel.send("Du hast keine Rechte!");
         console.log(message.author.tag + " evaled " + args.join(" "));
@@ -28,7 +28,7 @@ export default class Eval extends Command {
                 }
             });
         } catch (err) {
-            console.error("It errored: " + err)
+            console.error("It errored: " + err);
             message.channel.send("```js\n{error}```".replace("{error}", inspect(err)), {
                 split: {
                     append: "```",

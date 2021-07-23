@@ -1,6 +1,6 @@
 import Client from "bot";
-import { Message, MessageEmbed } from "discord.js"
-import { Command } from "../modules/command"
+import { Message, MessageEmbed } from "discord.js";
+import { Command } from "../modules/command";
 
 export default class Roll extends Command {
 	constructor(client: Client) {
@@ -11,8 +11,8 @@ export default class Roll extends Command {
 		name: "roll",
 		usage: `${this.prefix}roll [args]`,
 		category: "Utility",
-        description: "Wirf einen Würfel - standardmäßig wird 1 w6 verwendet. Um andere Würfel zu verwenden verwende [Anzahl]w[Würfeltyp]"
-	}
+		description: "Wirf einen Würfel - standardmäßig wird 1 w6 verwendet. Um andere Würfel zu verwenden verwende [Anzahl]w[Würfeltyp]"
+	};
 	async run(client: Client, message: Message, args: string[]) {
 		const msgauthor: string = message.author.username;
 		//register args and variables
@@ -64,11 +64,11 @@ export default class Roll extends Command {
 
 			//process two arguments
 			if ((rollarga.indexOf("w") == 0) || (rollarga.indexOf("d") == 0)) {
-				var dicetype = rollarga
-				var rollcountmax = rollargb
+				var dicetype = rollarga;
+				var rollcountmax = rollargb;
 			} else if ((rollargb.indexOf("w") == 0) || (rollargb.indexOf("d") == 0)) {
-				var dicetype = rollargb
-				var rollcountmax = rollarga
+				var dicetype = rollargb;
+				var rollcountmax = rollarga;
 			} else return message.channel.send("<:warn_3:498277726604754946> Sehr merkwürdiger Fehler: Schrödingers Argument - `Würfeltyp` ist definiert und nicht definiert.");
 		}
 
@@ -76,19 +76,19 @@ export default class Roll extends Command {
 
 		if (args[0] && !args[1]) {
 
-			var detectedOnlyOneArg = true
+			var detectedOnlyOneArg = true;
 
 			if (rollarga.indexOf("w") == 0) {
-				var dicetype = rollarga
-				rollcountmax = "1"
-				var detectedDiceType = true
+				var dicetype = rollarga;
+				rollcountmax = "1";
+				var detectedDiceType = true;
 			} else if (rollarga.indexOf("d") == 0) {
-				var dicetype = rollarga
-				rollcountmax = "1"
-				var detectedDiceType = true
+				var dicetype = rollarga;
+				rollcountmax = "1";
+				var detectedDiceType = true;
 			} else {
-				rolltype = 6
-				rollcountmax = rollarga
+				rolltype = 6;
+				rollcountmax = rollarga;
 			}
 		}
 
@@ -127,7 +127,7 @@ export default class Roll extends Command {
 			return message.channel.send("*" + plaintext + "*", embed);
 		}
 		//@ts-ignore
-		if (isNaN(rollcountmax)) return message.channel.send("<:warn_3:498277726604754946> Es wäre sinnvoll, eine Zahl und keine Buchstabensammlung an Würfeln anzugeben.")
+		if (isNaN(rollcountmax)) return message.channel.send("<:warn_3:498277726604754946> Es wäre sinnvoll, eine Zahl und keine Buchstabensammlung an Würfeln anzugeben.");
 		//roll the dice and display the result
 		var rollresult: string = "";
 		let useEmotes: boolean;
@@ -137,7 +137,7 @@ export default class Roll extends Command {
 		//is the response too long?
 
 		if (rollcount > 70) {
-			return message.channel.send("<:warn_3:498277726604754946> Der Tisch ist zu klein für so viele Würfel. Es sind maximal 70 Würfel erlaubt")
+			return message.channel.send("<:warn_3:498277726604754946> Der Tisch ist zu klein für so viele Würfel. Es sind maximal 70 Würfel erlaubt");
 		}
 		let result: number[] = await client.random.ints(1, rolltype, rollcount);
 		result.forEach((num: number) => {
@@ -184,7 +184,7 @@ export default class Roll extends Command {
 					rollresult += " | ";
 				}
 			} //else
-		}) //forEach(num)
+		}); //forEach(num)
 
 		//response
 

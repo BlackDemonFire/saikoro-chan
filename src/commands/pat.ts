@@ -12,7 +12,7 @@ export default class Pat extends GifCommand {
         usage: `${this.prefix}pat [user]`,
         category: "gifs",
         description: ""
-    }
+    };
     async run(client: Client, message: Message, args: string[]) {
         var gif: string = client.db.getgif("pat", client.db.getgiftype(message.author));
         var userA: string = client.db.getname(message.author);

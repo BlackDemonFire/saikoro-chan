@@ -68,7 +68,7 @@ export default class Newgif extends Command {
                             default:
                                 break;
                         }
-                    })
+                    });
                 }
             }
         }
@@ -80,5 +80,5 @@ export default class Newgif extends Command {
         usage: `${this.prefix}newgif <url> <command> [type (defaults to anime)]`,
         category: "gifs",
         description: "Fügt ein neues Gif zur Datenbank hinzu"
-    }
+    };
 }

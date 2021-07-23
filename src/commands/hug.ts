@@ -12,7 +12,7 @@ export default class Hug extends GifCommand {
         usage: `${this.prefix}hug [user]`,
         category: "gifs",
         description: "Jemanden umarmen"
-    }
+    };
     async run(client: Client, message: Message, args: string[]) {
         var gif: string = client.db.getgif("hug", client.db.getgiftype(message.author));
         var userA: string = client.db.getname(message.author);

@@ -9,14 +9,14 @@ abstract class Command {
         this.prefix = client.config.prefix;
         this.client = client;
     }
-    abstract run(client: Client, message: Message, args: string[]): void
+    abstract run(client: Client, message: Message, args: string[]): void;
     isAprilFools() {
-        const date = new Date()
-        let myDate = date.toLocaleDateString()
-        let datesplit: string[] = myDate.split("/")
-        let mon = datesplit.shift()
-        let dom = datesplit.shift()
-        return (dom == "1" && mon == "4")
+        const date = new Date();
+        let myDate = date.toLocaleDateString();
+        let datesplit: string[] = myDate.split("/");
+        let mon = datesplit.shift();
+        let dom = datesplit.shift();
+        return (dom == "1" && mon == "4");
     }
     isOwner(message: Message): boolean {
         var apk: ClientApplication = this.client.application!;
@@ -36,7 +36,7 @@ abstract class GifCommand extends Command {
     async parseUser(client: Client, message: Message, args: string[]) {
         var userB: string = "";
         var mentioned: string[] = [];
-        var self: boolean = false
+        var self: boolean = false;
         if (args && args.length > 0) {
             for (const arg of args) {
                 var name: string | undefined;
@@ -91,4 +91,4 @@ abstract class GifCommand extends Command {
 export {
     Command,
     GifCommand
-}
+};

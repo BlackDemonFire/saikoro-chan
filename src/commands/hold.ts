@@ -12,7 +12,7 @@ export default class Hold extends GifCommand {
         usage: `${this.prefix}hold [user]`,
         category: "gifs",
         description: "Mit jemandem Händchen halten"
-    }
+    };
     async run(client: Client, message: Message, args: string[]) {
         var gif: string = client.db.getgif("handhold", client.db.getgiftype(message.author));
         var userA: string = client.db.getname(message.author);

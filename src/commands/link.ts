@@ -19,5 +19,5 @@ export default class Link extends Command {
         usage: `${this.prefix}link`,
         category: "Utility",
         description: "Zeigt nützliche links"
-    }
+    };
 }

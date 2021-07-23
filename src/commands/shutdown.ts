@@ -12,7 +12,7 @@ export default class Kill extends Command {
         usage: `${this.prefix}shutdown`,
         category: "Owner only",
         description: "Fährt den Bot herunter."
-    }
+    };
     async run(client: Client, message: Message, args: string[]) {
         if (!super.isOwner(message)) return message.channel.send("Du hast keine Rechte!");
         if (message !== null) {

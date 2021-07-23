@@ -28,7 +28,7 @@ export class DB {
         this.db.prepare("CREATE TABLE IF NOT EXISTS 'gifdb' (url text PRIMARY KEY, giftype text, actiontype text);").run();
         this.db.pragma('synchronous = 1');
         this.wal = this.db.pragma('journal_mode = wal');
-        
+
         this.newUserStatement = this.db.prepare("INSERT OR IGNORE INTO userdb VALUES (@id, @giftype, @color, @name);");
         this.setNameStatement = this.db.prepare("UPDATE userdb SET name = @name WHERE id = @id");
         this.setColorStatement = this.db.prepare("UPDATE userdb SET color = @color WHERE id = @id");
@@ -44,7 +44,7 @@ export class DB {
         this.allGifActionsStatement = this.db.prepare("SELECT DISTINCT actiontype FROM gifdb;");
     }
     deleteDSAChar(prefix: string) {
-        this.deleteCharStatement.run({prefix});
+        this.deleteCharStatement.run({ prefix });
     }
     getcolor(user: User) {
         var data = this.getColorStatement.get({ id: user.id });
@@ -78,7 +78,7 @@ export class DB {
     newuser(user: User) {
         this.newUserStatement.run({ id: user.id, giftype: "anime", color: "RANDOM", name: "" });
     }
-    setcolor(user: User, color: string) {
+    setcolor(user: User, color: number | string) {
         this.setColorStatement.run({ id: user.id, color: color });
     }
     setgiftype(user: User, giftype: string) {

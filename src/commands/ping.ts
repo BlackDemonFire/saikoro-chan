@@ -1,9 +1,9 @@
-import Client from "bot"
-import { Message, MessageEmbed } from "discord.js"
-import { Command } from "../modules/command"
+import Client from "bot";
+import { Message, MessageEmbed } from "discord.js";
+import { Command } from "../modules/command";
 export default class Ping extends Command {
     constructor(client: Client) {
-        super(client)
+        super(client);
     }
     help = {
         show: true,
@@ -11,7 +11,7 @@ export default class Ping extends Command {
         usage: `${this.prefix}ping`,
         category: "Utility",
         description: "Zeigt die Latenz vom Bot"
-    }
+    };
     async run(client: Client, message: Message, args: string[]) {
         //code
         const embed = new MessageEmbed();

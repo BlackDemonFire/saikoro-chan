@@ -14,7 +14,7 @@ export default class Name extends Command {
             newname = args.join(" ");
         }
         client.db.setname(message.author, newname);
-        message.channel.send(newname==="" ? "Dein Name wurde zurückgesetzt" : `Dein Name wurde zu \`${newname}\` geändert.`)
+        message.channel.send(newname === "" ? "Dein Name wurde zurückgesetzt" : `Dein Name wurde zu \`${newname}\` geändert.`);
     }
     help = {
         show: true,
@@ -22,5 +22,5 @@ export default class Name extends Command {
         usage: `${this.prefix}name [name]`,
         category: "gifs",
         description: "Ändere den Namen, der in Embeds angezeigt wird (keine Angabe resultiert im Nickname/Username)"
-    }
+    };
 }
