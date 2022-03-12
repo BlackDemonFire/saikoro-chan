@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/better-sqlite3": "^5.4.3",
+    "@types/better-sqlite3": "^7.5.0",
     "@types/node": "^16.3.3",
     "better-sqlite3": "^7.4.3",
     "chalk": "^4.1.0",
